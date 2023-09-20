@@ -5,7 +5,7 @@ import { CategoryItem } from './components'
 import { Header } from '../../components'
 import styles from './Home.styles'
 
-const Home = ({setCategorySelected}) => {
+const Home = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Header title={'CATEGORIES'} />
@@ -14,7 +14,7 @@ const Home = ({setCategorySelected}) => {
                 keyExtractor={category => category}
                 renderItem={
                     ({ item }) => (
-                        <CategoryItem category={item} setCategorySelected={setCategorySelected} />
+                        <CategoryItem category={item} navigation={navigation} />
                     )
                 } />
         </View>
