@@ -1,19 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { View, FlatList } from 'react-native'
 import React from 'react'
-import Header from '../../components/Header'
-import Categories from '../../components/Categories'
+import dataCategories from '../../data/dataCategories'
+import { CategoryItem } from './components'
+import { Header } from '../../components'
+import styles from './Home.styles'
 
-
-
-const Home = () => {
+const Home = ({setCategorySelected}) => {
     return (
-        <>
-            <Header title={'Home'} />
-            <Categories />
-        </>
+        <View style={styles.container}>
+            <Header title={'CATEGORIES'} />
+            <FlatList
+                data={dataCategories}
+                keyExtractor={category => category}
+                renderItem={
+                    ({ item }) => (
+                        <CategoryItem category={item} setCategorySelected={setCategorySelected} />
+                    )
+                } />
+        </View>
+
     )
 }
 
 export default Home
 
-const styles = StyleSheet.create({})
