@@ -4,12 +4,14 @@ import React, { useEffect, useState } from 'react'
 
 import allProducts from '../../data/products'
 import styles from './Products.style'
+import { useSelector } from 'react-redux'
 
 
-const Products = ({ navigation, route }) => {
+const Products = ({ navigation}) => {
+    const category = useSelector(state => (state.shop.categorySelected))
     const [arrProducts, setArrProducts] = useState([])
     const [keyword, setKeyword] = useState('')
-    const { category } = route.params
+
 
 
     useEffect(() => {

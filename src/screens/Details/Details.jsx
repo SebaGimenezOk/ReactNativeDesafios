@@ -3,10 +3,11 @@ import { Image, SafeAreaView, Text, View } from 'react-native'
 import { Header } from '../../components'
 import React from 'react'
 import styles from './Details.style'
+import { useSelector } from 'react-redux'
 
 const Details = ({ route }) => {
-
-const  {product}=route.params
+    const counter = useSelector(state => state.counter.value)
+    const { product } = route.params
 
     return (
         <View style={styles.container}>
@@ -15,6 +16,7 @@ const  {product}=route.params
             <Text style={styles.title}>{product.title}</Text>
             <Text>{product.description}</Text>
             <Text style={styles.price}>{`$ ${product.price}`}</Text>
+            <Text style={{ fontSize: 65 }} >{counter}</Text>
         </View>
     )
 }

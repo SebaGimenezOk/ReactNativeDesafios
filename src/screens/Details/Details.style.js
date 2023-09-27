@@ -1,21 +1,16 @@
-import { StyleSheet } from 'react-native'
-import { colors } from '../../constants/colors'
+import { StyleSheet } from "react-native"
 
 export default styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.white,
-        margin:20,
-        marginBottom:20,
-
+        backgroundColor: '#FFFFFF',
     },
     imageContainer: {
         height: '50%',
-        width: '100%',
+        width: '50%',
     },
     image: {
-        height: '50%',
-        
+        height: '40%',
     },
     title: {
         fontSize: 30,
