@@ -1,24 +1,25 @@
-import { StyleSheet } from "react-native";
-import colors from '../../../constants/colors'
+import { StyleSheet } from 'react-native'
+import { colors } from '../../../constants/colors'
 
 export default styles = StyleSheet.create({
-    
     container: {
-        flex: 1,
+        margin: 15,
         padding: 8,
-        borderBottomWidth: 1,
-        borderBottomColor:'red',
+        borderRadius: 20,
+        backgroundColor: colors.grey,
     },
     name: {
-        fontSize: 19,
-
+        fontSize: 18,
     },
-    details:{
-        flex:1,
-        flexDirection:'row',
-        flexWrap:'wrap',
-        justifyContent:'space-between',
-        alignItems:'center',
+    image: {
+        width: 50,
+        height: 50,
     },
-} 
-)
+    details: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+})

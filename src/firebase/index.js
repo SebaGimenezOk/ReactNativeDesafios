@@ -1,0 +1,1 @@
+export const baseUrl="https://reactnativedesafios-default-rtdb.firebaseio.com/"

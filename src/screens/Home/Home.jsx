@@ -1,29 +1,29 @@
-import { View, FlatList } from 'react-native'
-import React from 'react'
-import dataCategories from '../../data/dataCategories'
+import { FlatList, SafeAreaView, StatusBar, View } from 'react-native'
 import { CategoryItem } from './components'
 import { Header } from '../../components'
+import React from 'react'
 import styles from './Home.styles'
-import Counter from '../../components/Counter'
+import { useGetCategoriesQuery } from '../../services/shopApi'
 
 const Home = ({ navigation }) => {
+    const { data, isLoading } = useGetCategoriesQuery()
     return (
 
-        <View style={styles.container}>
-            <Counter />
-            <Header title={'CATEGORIES'} />
-            <FlatList
-                data={dataCategories}
-                keyExtractor={category => category.title}
-                renderItem={
-                    ({ item }) => (
-                        <CategoryItem category={item.title} navigation={navigation} />
-                    )
-                } />
-        </View>
-
+        <SafeAreaView style={styles.container}>
+            <Header title={'CATEGORIAS'} />
+            <View style={styles.listContainer}>
+                {!isLoading && (
+                    <FlatList
+                        data={data}
+                        keyExtractor={category => category.title}
+                        renderItem={({ item }) => (
+                            <CategoryItem category={item.title} navigation={navigation} />
+                        )}
+                    />
+                )}
+            </View>
+        </SafeAreaView>
     )
 }
 
 export default Home
-

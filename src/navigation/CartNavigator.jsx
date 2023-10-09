@@ -12,7 +12,7 @@ function CartNavigator() {
             initialRouteName='Cart'
             screenOptions={() => ({ headerShown: false, })}
         >
-            <Stack.Screen name='Home' component={Cart} />
+            <Stack.Screen name='Cart' component={Cart} />
         </ Stack.Navigator>
 
     )

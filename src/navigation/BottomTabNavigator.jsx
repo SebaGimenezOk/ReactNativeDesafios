@@ -1,75 +1,75 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import CartNavigator from './CartNavigator'
-import StackNavigator from "./StackNavigator";
-import Feather from '@expo/vector-icons/Feather';
-import { StyleSheet } from "react-native";
-import { colors } from "../constants/colors";
-import OrdersNavigator from "./OrdersNavigator";
+import { StyleSheet, View } from 'react-native'
 
+import CartNavigator from './CartNavigator'
+import Feather from '@expo/vector-icons/Feather'
+import OrdersNavigator from './OrdersNavigator'
+import StackNavigator from './StackNavigator'
+import { colors } from '../constants/colors'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 const BottomTab = createBottomTabNavigator()
 
-
 function BottomTabNavigator() {
     return (
-        <BottomTab.Navigator initialRouteName="Shop"
+        <BottomTab.Navigator
+            initialRouteName="Shop"
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
                 tabBarStyle: styles.tabBar,
-            }}>
+            }}
+        >
             <BottomTab.Screen
-                name='Shop'
+                name="Shop"
                 component={StackNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name="shopping-bag"
-                            size={24}
-                            color={focused ? colors.primary : '#fff'} />
-                    )
-                }} />
+                        <View style={focused ? styles.iconContainer : null}>
+                            <Feather name="shopping-bag" size={24} color={colors.white} />
+                        </View>
+                    ),
+                }}
+            />
             <BottomTab.Screen
-                name='CartNav'
+                name="CartNav"
                 component={CartNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name="shopping-cart"
-                            size={24}
-                            color={focused ? colors.primary : '#fff'} />
-                    )
-                }} />
-
-<BottomTab.Screen
-                name='OrdersNav'
+                        <View style={focused ? styles.iconContainer : null}>
+                            <Feather name="shopping-cart" size={24} color={colors.white} />
+                        </View>
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="OrdersNav"
                 component={OrdersNavigator}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name="file-text"
-                            size={24}
-                            color={focused ? colors.primary : '#fff'} />
-                    )
-                }} />
+                        <View style={focused ? styles.iconContainer : null}>
+                            <Feather name="list" size={24} color={colors.white} />
+                        </View>
+                    ),
+                }}
+            />
         </BottomTab.Navigator>
     )
-
 }
+
 export default BottomTabNavigator
 
-
-
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-
-    },
     tabBar: {
-        backgroundColor: colors.tertiary,
+        backgroundColor: colors.primary,
         borderTopRightRadius: 25,
         borderTopLeftRadius: 25,
-
-
-    }
+        paddingTop: 5,
+    },
+    iconContainer: {
+        backgroundColor: colors.secondary,
+        borderRadius: 20,
+        padding: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 })

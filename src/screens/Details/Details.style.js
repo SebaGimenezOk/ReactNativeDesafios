@@ -4,13 +4,15 @@ export default styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
+        padding:10,
     },
     imageContainer: {
         height: '50%',
-        width: '50%',
+        width: '100%',
     },
     image: {
-        height: '40%',
+        height:'100%',
+
     },
     title: {
         fontSize: 30,
