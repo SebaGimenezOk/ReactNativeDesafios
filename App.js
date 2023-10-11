@@ -1,10 +1,10 @@
 import { useFonts } from 'expo-font'
 import fonts from './src/global/fonts'
-import BottomTabNavigator from './src/navigation/BottomTabNavigator'
 import { NavigationContainer } from '@react-navigation/native'
 import { Provider } from 'react-redux'
 import store from './src/store'
-import Login from './src/screens/Login/Login'
+import MainNavigator from './src/navigation/MainNavigator'
+
 
 
 export default function App() {
@@ -12,12 +12,12 @@ export default function App() {
   if (!fontsLoaded) {
     return null
   }
-  // return (
-  // <Provider store={store}>
-  //     <NavigationContainer>
-  //     <BottomTabNavigator />
-  //   </NavigationContainer>
-  // </Provider>
-  // )
-  return <Login/>
+  return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <MainNavigator/>
+      </NavigationContainer>
+    </Provider>
+  )
+
 }

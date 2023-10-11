@@ -24,7 +24,7 @@ export default styles = StyleSheet.create({
         width: '95%',
         height: 30,
         marginVertical: 15,
-        borderRadius:10,
+        borderRadius:8,
         
     },
     loginButton: {
@@ -32,9 +32,9 @@ export default styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom:15,
+        marginBottom:10,
         borderRadius:10,
-        width:'50%',
-        marginTop:20,
+        width:'70%',
+        marginTop:12,
     }
 })
