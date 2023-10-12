@@ -4,25 +4,35 @@ import { SearchInput } from '../../components'
 import styles from './Products.style'
 import { useGetProductsByCategoryQuery } from '../../services/shopApi'
 import { useSelector } from 'react-redux'
+
+
+
 const Products = ({ navigation }) => {
     const category = useSelector(state => state.shop.categorySelected)
     const [keyword, setKeyword] = useState('')
     const { data, isLoading } = useGetProductsByCategoryQuery(category)
-    useEffect(() => {
+    const [products,setProducts]= useState([])
 
-        if (data) {
-            const productsFiltered = data.filter(product =>
+    useEffect(() => {
+        console.log(data, isLoading)
+        if (!isLoading) {
+            const dataArr = Object.values(data)
+            setProducts(dataArr)
+            const productsFiltered = dataArr.filter(product =>
                 product.title.includes(keyword)
             )
+            setProducts(productsFiltered)
         }
-    }, [])
+    }, [isLoading, keyword])
+
+
     return (
         <SafeAreaView style={styles.container}>
             <SearchInput onSearch={setKeyword} />
             <View style={styles.listContainer}>
                 {!isLoading && (
                     <FlatList
-                        data={Object.values(data)}
+                        data={products}
                         numColumns={2}
                         columnWrapperStyle={styles.weapperStyle}
                         renderItem={({ item }) => (

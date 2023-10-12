@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     user: null,
     token: null,
-    localId: null,
     imageCamera: null,
 }
 
@@ -24,7 +23,7 @@ export const authSlice = createSlice({
         setCameraImage: (state, action) => {
             return {
                 ...state,
-                imageCamera: action.payload,
+                imageCamera: action.payload
             }
         },
     },

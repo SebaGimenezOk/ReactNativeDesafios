@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { } from '../screens'
+import {Profile } from '../screens'
 
 
 const ProfileStack = createNativeStackNavigator()
 
-function ProfileStackNavigator() {
+function ProfileNavigator() {
     return (
 
         <ProfileStack.Navigator
@@ -18,4 +18,4 @@ function ProfileStackNavigator() {
 
     )
 }
-export default ProfileStackNavigator
+export default ProfileNavigator
