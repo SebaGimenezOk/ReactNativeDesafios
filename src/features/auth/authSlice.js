@@ -1,26 +1,35 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    use: null,
+    user: null,
     token: null,
+    localId: null,
+    imageCamera: null,
 }
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reucers: {
+    reducers: {
         setUser: (state, action) => {
-
             return {
-                user: action.payload.data.email,
-                token: action.payload.data.idToken,
+                user: action.payload.email,
+                token: action.payload.idToken,
+                localId: action.payload.localId,
             }
         },
         clearUser: () => {
-            return { user: null, token: null }
-        }
-    }
+            return { user: null, token: null, localId: null }
+        },
+        setCameraImage: (state, action) => {
+            return {
+                ...state,
+                imageCamera: action.payload,
+            }
+        },
+    },
 })
-export const { setUser, clearUser } = authSlice.actions
 
-export default authSlice.reducer 
+export const { setUser, clearUser, setCameraImage } = authSlice.actions
+
+export default authSlice.reducer

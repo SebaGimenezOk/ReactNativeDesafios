@@ -1,12 +1,12 @@
-
-import styles from './Signup.style'
-import { View, Text, TextInput, Pressable } from 'react-native'
+import { Pressable, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
-import { useSignUpMutation } from '../../services/authApi'
-import { useDispatch } from 'react-redux'
+import { TextInput as Input } from 'react-native-paper'
 import { setUser } from '../../features/auth/authSlice'
+import styles from './Signup.style'
+import { useDispatch } from 'react-redux'
+import { useSignUpMutation } from '../../services/authApi'
 
-const SignUp = () => {
+const Signup = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
@@ -14,25 +14,24 @@ const SignUp = () => {
     const dispatch = useDispatch()
 
     const onSubmit = () => {
-    
+        console.log('Login button')
         triggerSignup({
             email,
             password,
         })
-        console.log(result)
-        if (result.isSucces){
-            dispatch(setUser(result))
-        }
+            .unwrap()
+            .then(result => {
+                console.log(result)
+                dispatch(setUser(result))
+            })
+            .catch(err => console.log(err))
     }
-
-
 
     return (
         <View style={styles.container}>
             <View style={styles.loginContainer}>
-                <Text>
-                    Login to start
-                </Text>
+                <Text>Sing up to start</Text>
+                {/* <Input mode="flat" label="Email" style={styles.email} /> */}
                 <TextInput
                     style={styles.inputEmail}
                     value={email}
@@ -48,21 +47,19 @@ const SignUp = () => {
                     value={confirmPass}
                     onChangeText={setConfirmPass}
                 />
-
                 <Pressable style={styles.loginButton} onPress={onSubmit}>
-                    <Text>Sign Up</Text>
+                    <Text style={{ color: 'white' }}>Sign up</Text>
                 </Pressable>
-
-                <Text>No tienes cuenta? </Text>
-
-                <Pressable style={styles.loginButton}>
-                    <Text>
-                        Log in
-                    </Text>
+                <Text>Already have an account?</Text>
+                <Pressable
+                    style={styles.loginButton}
+                    onPress={() => navigation.navigate('Login')}
+                >
+                    <Text style={{ color: 'white' }}>Login</Text>
                 </Pressable>
             </View>
         </View>
     )
 }
 
-export default SignUp
+export default Signup
